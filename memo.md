@@ -35,3 +35,7 @@ create react app은 개발환경을 실행시킬 대 npm runn start를 썼는데
 실제로 서비스를 할 때에는 build 내의 파일을 쓰면 된다. 
 
 ## 5. Component 만들기
+
+실제 tag를 보고 싶으면 element 탭을 쓰면 되고 
+리액트 상의 컴포넌트를 보고 싶으면 react라는 탭을 선택하면 됨
+
