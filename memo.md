@@ -39,3 +39,54 @@ create react app은 개발환경을 실행시킬 대 npm runn start를 썼는데
 실제 tag를 보고 싶으면 element 탭을 쓰면 되고 
 리액트 상의 컴포넌트를 보고 싶으면 react라는 탭을 선택하면 됨
 
+
+## 6. State
+
+* 사용자 입장에서 제품을 조작하는 장치는 UI. => react의 관점에서의 props
+Component를 만들고, 이의 기본적인 동작을 바꾸고 싶을 때 사용자에게 제공하는 것이 태그의 속성에 해당하는 props. => 사용자가 컴포넌트를 조작할 수 있게 됨
+
+
+* 내부적으로 제품을 조작하는 것은 State
+Component 내부적으로 활용되는 것들이 State. 
+
+좀 더 다양한 Component를 만들기 위한 것이 State이며 이 과정에서 props를 더 잘 이해하게 될 것.
+
+* **constructor()**:  render() 함수보다 먼저 실행되면서, Component를 초기화 해주고 싶은 코드는 여기 씀
+
+* App.js 파일을 사용하는 파일은 index.js 파일. index.js 내에 App이라는 컴포넌트를 실행하는 코드가 있는데, 우리는 state값이 subject인지 모른다는 게 줒요함.
+외부에서 어떻게 사용되는지 모른다는 게 중요함. 
+App이 내부적으로 활용될 땐 state를 사용하여 활용됨. 
+
+* `lists.push(<li><a href={"/content/"+data[i].id}>{data[i].title}</a></li>);` 처럼 여러 개의 element를 자동으로 생성하는 경우에는 console 상에서 에러가 발생할 것.
+=> 각 항목들은 key라는 props를 가져야 한다.
+
+=> `lists.push(<li key={data[i].id}><a href={"/content/"+data[i].id}>{data[i].title}</a></li>);`: react가 원해서 사용하는 것
+
+## 7. event
+
+* props, state, event는 서로 상호작용하면서 app의 역동성을 만들어줌
+
+* props 값이나 state 값이 바뀌면 해당 클래스 내의 render() 함수가 호출되고, render() 함수 내 component들의 render()함수도 다 호출 됨 => 화면이 다시 그려짐
+  
+* render() 함수는 어떤 html이 그려질지 설명해줌
+
+* 크롬 개발자 도구를 쓸 때, `debegger`라고 치면, 실행이 멈추고 sources로 이동해서 우리가 원하는 정보를 쉽게 얻을 수 있게 해줌
+
+* `e.preventDefault();`: a 태그의 기본적인 동작 방법을 지움
+
+* *this를 찾을 수 없다는 에러*가 발생하면, 해당 함수가 끝난 직후에 `.bind(this)` 코드를 써준다.
+
+* bind, set state 해줘야 함. => 몰라도 되는데 아는 게 좋음
+
+## 8. bind 함수
+
+* **render()** 함수 내에서 this는 render 함수가 속해있는 component 자체를 가리키는데, onclick 내 함수는 this가 아무 값도 없음. => 강제로 this값을 주입
+
+* bind 함수의 첫 번째 인자로 변수를 주면 bind라는 함수로 인해 bind를 호출한 함수의 this는 bind 함수의 첫 번째 인자가 됨
+function().bind(hi); // function 함수 내에서의 this는 hi
+
+* state 값을 바꿀 때에는 *setState 함수*내에 인자로 바꿀 값을 전달
+
+## 9. 컴포넌트 이벤트 만들기
+
+* event 객체는 target이라는 속성이 있는데, 이건 이 이벤트가 발생한 태그를 가리킴
